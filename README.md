@@ -9,7 +9,7 @@ Our platform is a transparent and fully democratic implementation of this idea, 
 
 ## How does the proposed system work?
 
-The rules are simple. To become a *citizen*, you pay a monthly fee (your taxes) ranging anywhere from $1-50. You can create one *proposal* at a time; this proposal can enact a _policy_, _program_, or _venture_. A proposal can encompass anything from police force funding
+The rules are simple. To become a *citizen*, you pay a monthly fee (your taxes) ranging anywhere from $1-50. You can create one *proposal* at a time; this proposal can enact a _policy_, _program_, or _venture_. As such, a citizen can vote on anything from police force funding to adding or repealing a law.
 
 You get three *votes* a month. Your votes determine where your taxes go. If you don’t distribute any of your three votes, a percentage of that month’s payments can go to the maintainer of the platform; with the remainder distributed either 1) equally across all proposals for that month or 2) according to voting defaults set in your profile.
 
