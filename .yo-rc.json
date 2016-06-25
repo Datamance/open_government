@@ -1,0 +1,10 @@
+{
+  "generator-flask-api": {
+    "appName": "technocracy",
+    "database": "postgresql",
+    "databaseMapper": "sqlalchemy",
+    "versioningScheme": "major",
+    "currentVersion": "v1",
+    "urlPrefix": "/api"
+  }
+}
