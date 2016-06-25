@@ -1,4 +1,4 @@
-from .. import db
+from ..webapp import database as db
 
 
 class Proposal(db.Model):
