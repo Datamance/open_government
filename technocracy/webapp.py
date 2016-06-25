@@ -2,7 +2,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from sqlalchemy_jsonapi import FlaskJSONAPI
-import sqlalchemy_jsonapi as sa_jsonapi
 
 from config import config
 
@@ -21,8 +20,6 @@ def setup_app(config_name, app, database):
 
     # 2) Set up CORS.
     CORS(app)
-
-    print(type(sa_jsonapi.FlaskJSONAPI))
     
     # 3) Get JSON:API compliant endpoints, based on models.
     return FlaskJSONAPI(app, database)
