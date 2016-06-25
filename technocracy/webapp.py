@@ -1,7 +1,8 @@
 from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.cors import CORS
+from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 from sqlalchemy_jsonapi import FlaskJSONAPI
+import sqlalchemy_jsonapi as sa_jsonapi
 
 from config import config
 
@@ -13,7 +14,7 @@ database = SQLAlchemy(app)
 
 
 def setup_app(config_name, app, database):
-	"""Creates a JSON:API compliant REST application."""
+    """Creates a JSON:API compliant REST application."""
 
     # 1) Set up appropriate app configs.
     app.config.from_object(config[config_name])
@@ -21,8 +22,7 @@ def setup_app(config_name, app, database):
     # 2) Set up CORS.
     CORS(app)
 
-    # 3) set up JSON:API compliant endpoints, based on models.
-    api = FlaskJSONAPI(app, database)
-
-    # 5) Give up all the goodies.
-    return api
+    print(type(sa_jsonapi.FlaskJSONAPI))
+    
+    # 3) Get JSON:API compliant endpoints, based on models.
+    return FlaskJSONAPI(app, database)
