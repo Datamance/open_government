@@ -14,6 +14,7 @@ manager = Manager(app)
 
 @manager.shell
 def make_shell_context():
+    """This saves quite a few imports."""
     return dict(app=app, db=database)
 
 
