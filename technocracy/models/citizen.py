@@ -2,7 +2,8 @@ from ..webapp import database as db
 
 
 class Citizen(db.Model):
-	__tablename__ = 'citizens'
+
+    # __tablename__ = 'citizens'
 
     id = db.Column(db.Integer, primary_key=True)
     # Additional fields
