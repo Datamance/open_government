@@ -10,3 +10,4 @@ blinker
 passlib
 pathtools
 inflection
+psycopg2
