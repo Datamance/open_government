@@ -1,0 +1,13 @@
+Flask
+Flask-SQLAlchemy
+Flask-CORS
+SQLAlchemy
+SQLAlchemy-JSONAPI
+SQLAlchemy-Utils
+inflection
+bcrypt
+blinker
+passlib
+pathtools
+inflection
+psycopg2

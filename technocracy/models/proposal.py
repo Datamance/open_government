@@ -1,12 +1,11 @@
 from ..webapp import database as db
+from .mixins import Document
 
 
-class Proposal(db.Model):
+class Proposal(Document, db.Model):
+    """
+    Proposals.
 
-    # __tablename__ = 'proposals'
-
-    id = db.Column(db.Integer, primary_key=True)
-    # Additional fields
-
-    def __repr__(self):
-        return 'Proposal {}>'.format(self.id)
+    TODO(rico): Flesh out the proposal framework.
+    """
+    pass
