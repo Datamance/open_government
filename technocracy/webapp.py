@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy  # declarative_base
+from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from sqlalchemy_jsonapi import FlaskJSONAPI
 
@@ -10,9 +10,6 @@ app = Flask(__name__)
 
 # 2) Set up the database. We can now import this anywhere.
 database = SQLAlchemy(app)
-
-# Declarative base needs to be hooked up to the correct engine...
-# OrmBase = declarative_base()
 
 
 def setup_app(config_name, app, database):
