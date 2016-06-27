@@ -23,6 +23,8 @@ def setup_app(config_name, app, database):
     :param app: The application.
     :param database: SQLAlchemy database.
     """
+    # 0) Import models.
+    from .models import (Citizen, Proposal)
 
     # 1) Set up appropriate app configs.
     app.config.from_object(config[config_name])
