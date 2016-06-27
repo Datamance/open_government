@@ -34,11 +34,12 @@ def init_db():
 
     database.create_all()
 
+
 @manager.command
 def drop_tables():
     """Drops all the tables."""
     if prompt_bool('You sure you wanna destroy the current government?'):
-        db.drop_all()
+        database.drop_all()
 
 
 if __name__ == '__main__':
