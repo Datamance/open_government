@@ -1,4 +1,4 @@
-from ..lib.flaskext import database as db
+from ..webapp import database as db
 
 
 class Proposal(db.Model):
