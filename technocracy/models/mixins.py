@@ -1,7 +1,7 @@
 from uuid import uuid4
-from sqlalchemy import Boolean, Column, ForeignKey, Unicode, UnicodeText
+from sqlalchemy import Boolean, Column, Unicode, UnicodeText
 from sqlalchemy.ext.declarative import declared_attr
-from sqlalchemy.orm import backref, relationship, validates
+from sqlalchemy.orm import validates
 from sqlalchemy_jsonapi import Permissions, permission_test
 from sqlalchemy_utils import EmailType, PasswordType, Timestamp, UUIDType
 
@@ -17,11 +17,13 @@ class BaseEntityMixin(Timestamp):
 
     id = Column(UUIDType, default=uuid4, primary_key=True)
 
+    def __repr__(self):
+        return '<{entity_type}-{id}>'.format(
+            entity_type=self.__class__, id=self.id)
+
 
 class User(BaseEntityMixin):
-    """
-    Mixin for users - admins, citizens, etc.
-    """
+    """Mixin for users - admins, citizens, etc."""
     name = Column(Unicode(30), unique=True, nullable=False)
     email = Column(EmailType, nullable=False)
     password = Column(PasswordType(schemes=PASSWORD_ENCRYPTION_SCHEMES),
@@ -57,5 +59,20 @@ class User(BaseEntityMixin):
         """You should be able to get rid of your presence."""
         return True
 
-    def __repr__(self):
-        return 'Citizen {}>'.format(self.id)
+
+class Document(BaseEntityMixin):
+    """Anything with text and meta.
+
+    Note: At the time, I'm not enforcing any authorship norms. Those
+    are to be defined on their respective ORM classes.
+    """
+    title = Column(Unicode(100), nullable=False)
+    content = Column(UnicodeText, nullable=False)
+    published = Column(Boolean, default=False)
+
+    @validates('title')
+    def validate_title(self, key, title):
+        """Keep titles from getting too long."""
+        assert len(title) >= 5 or len(
+            title) <= 100, 'Must be 5 to 100 characters long.'
+        return title
