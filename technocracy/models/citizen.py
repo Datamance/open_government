@@ -1,4 +1,4 @@
-from ..webapp import database as db
+from ..lib.flaskext import database as db
 
 
 class Citizen(db.Model):
