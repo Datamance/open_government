@@ -1,12 +1,21 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy  # declarative_base
 from flask_cors import CORS
+from sqlalchemy_jsonapi import FlaskJSONAPI
 
 from config import config
 
-from .lib.flaskext import api, database
+# 1) create the flask application.
+app = Flask(__name__)
+
+# 2) Set up the database. We can now import this anywhere.
+database = SQLAlchemy(app)
+
+# Declarative base needs to be hooked up to the correct engine...
+# OrmBase = declarative_base()
 
 
-def setup_app(config_name):
+def setup_app(config_name, app, database):
     """
     Creates a JSON:API compliant REST application.
 
@@ -14,15 +23,12 @@ def setup_app(config_name):
     :param app: The application.
     :param database: SQLAlchemy database.
     """
-    # Setup Flask App
-    app = Flask('open_government')
 
-    # Load Configurations
+    # 1) Set up appropriate app configs.
     app.config.from_object(config[config_name])
 
-    # Initialize extensions
-    database.init_app(app)
+    # 2) Set up CORS.
     CORS(app)
-    api.init_app(app, database)
 
-    return app
+    # 3) Get JSON:API compliant endpoints, based on models.
+    return FlaskJSONAPI(app, database)
