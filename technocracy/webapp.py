@@ -21,7 +21,7 @@ def setup_app(config_name, app, database):
     :param database: SQLAlchemy database.
     """
     # 0) Import models. SQLAlchemy requires this during app initialization.
-    from .models import (Citizen)
+    from .models import (Citizen, Proposal)
 
     # 1) Set up appropriate app configs.
     app.config.from_object(config[config_name])
