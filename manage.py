@@ -2,15 +2,13 @@ import os
 
 from flask_script import Manager, Server, prompt_bool
 
-from technocracy.webapp import app, database, setup_app
+from technocracy.webapp import setup_app, api, database
 # from technocracy.api import configure_api
 
 
+app = setup_app(os.getenv('TECHNOCRACY_CONFIG', 'default'))
+
 manager = Manager(app)
-
-
-api = setup_app(os.getenv('TECHNOCRACY_CONFIG', 'default'), app, database)
-
 
 manager.add_command('runlocal', Server(host='localhost', port=5000))
 
