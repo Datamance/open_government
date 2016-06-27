@@ -4,3 +4,9 @@ Flask-CORS
 SQLAlchemy
 SQLAlchemy-JSONAPI
 SQLAlchemy-Utils
+inflection
+bcrypt
+blinker
+passlib
+pathtools
+inflection
