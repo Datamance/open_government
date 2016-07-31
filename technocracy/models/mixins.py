@@ -1,11 +1,15 @@
-from uuid import uuid4
+
+from inflect import engine
 from sqlalchemy import Boolean, Column, Unicode, UnicodeText
 from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy.orm import validates
 from sqlalchemy_jsonapi import Permissions, permission_test
 from sqlalchemy_utils import EmailType, PasswordType, Timestamp, UUIDType
+from uuid import uuid4
 
 PASSWORD_ENCRYPTION_SCHEMES = ['bcrypt']
+
+inflector = engine()
 
 
 class BaseEntityMixin(Timestamp):
@@ -13,7 +17,7 @@ class BaseEntityMixin(Timestamp):
 
     @declared_attr
     def __tablename__(cls):
-        return '{!s}s'.format(cls.__name__.lower())
+        return inflector.plural(cls.__name__.lower())
 
     id = Column(UUIDType, default=uuid4, primary_key=True)
 
